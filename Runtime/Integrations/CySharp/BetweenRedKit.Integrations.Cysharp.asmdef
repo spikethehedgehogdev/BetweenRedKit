@@ -1,0 +1,17 @@
+{
+    "name": "BetweenRedKit.Integrations.Cysharp",
+    "rootNamespace": "BetweenRedKit.Integrations.Cysharp",
+    "references": [
+        "GUID:ee2d8a22d97f40e69e2aff3718c11021",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

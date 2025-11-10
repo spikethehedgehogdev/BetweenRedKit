@@ -1,0 +1,58 @@
+# Unity generated
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+UserSettings/
+MemoryCaptures/
+
+# Visual Studio / Rider
+.vs/
+.idea/
+*.csproj
+*.unityproj
+*.sln
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+
+# Unity crash / meta
+*.stackdump
+*.swp
+*.tmp
+*.bak
+*.orig
+*.old
+
+# Asset meta data should be tracked
+!*.meta
+
+# UPM / Package cache
+Packages/*/Tests/Temp/
+Packages/*/obj/
+Packages/*/bin/
+Packages/*/Library/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build artefacts
+*.apk
+*.aab
+*.ipa
+*.exe
+*.app
+*.zip
+*.7z
+
+# Coverage / reports
+coverage/
+TestResults/
