@@ -35,3 +35,19 @@ and adheres to [Semantic Versioning](https://semver.org/).
 - Color / Float / Material targets  
 - Between Debugger (EditorWindow)  
 - Profiler hooks (`ActiveCount`, `AvgLifetime`)
+
+## [0.10.0] – 2025-11-17
+### Added
+- `ColorBetween` — zero-GC tween target for `Graphic.color`.
+- `CanvasGroupAlphaBetween` — tween target for `CanvasGroup.alpha`.
+- `GraphicExtensions` — new extension methods:
+  - `ColorTo()` for UI color transitions.
+  - `FadeTo()` for CanvasGroup fading.
+- Extended documentation and XML summaries across all public APIs.
+
+### Changed
+- Unified documentation style across all modules.
+- Minor refactor of `BetweenProcessor` internals (no behavioral change).
+
+### Notes
+- Partial progress on “Value Targets” roadmap milestone.

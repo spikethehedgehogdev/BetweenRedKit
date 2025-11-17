@@ -20,7 +20,8 @@ It’s not a replacement for DOTween — it’s a lightweight alternative for ca
 - **Extensible easing provider:** `IEasingProvider` interface supports custom curves and easing definitions.  
 - **MonoBehaviour-free:** Works as a pure service — easily integrates into DI containers, ECS, or custom game loops.  
 - **Async / Await ready:** UniTask awaiters allow asynchronous tween completion without coroutines or GC pressure.  
-- **Transform integration:** Built-in extensions for `MoveTo`, `RotateTo`, and `ScaleTo`.  
+- **Transform integration:** Built-in extensions for `MoveTo`, `RotateTo`, and `ScaleTo`.
+- **Graphics integration:** Built-in extensions for `ColorTo` and `FadeTo`.
 - **Lifecycle control:** `Dispose()`, `PauseAll()`, `Stop()`, `CullInvalidTargets()` for safe runtime cleanup.  
 - **Minimal runtime footprint:** ~15 KB of code, no editor dependencies, single external dependency — UniTask.
 
@@ -67,14 +68,16 @@ Runtime/
  ├─ Core/          // BetweenProcessor, BetweenHandle, interfaces and time providers
  ├─ Easing/        // EaseType and easing provider
  └─ Integrations/
-     ├─ Unity/     // Transform extensions: MoveTo / RotateTo / ScaleTo
+     ├─ Unity/     // Extensions
      └─ CySharp/   // UniTask awaiters: AwaitCompletion()
 ```
 
 ## Roadmap (pre-1.0)
 - [ ] **Sequence API** — chaining tweens with `Append()` / `Join()` and async `Play()`
 - [ ] **Loop / PingPong** — repeat, reverse, and auto-restart modes
-- [ ] **Value Targets** — tweens for `float`, `Color`, `Material`, `RectTransform`, `CanvasGroup`
+- [ ] **Value Targets** — tweens for
+- - [x]  `Color`, `CanvasGroup`
+- - [ ]  `float`, `Material`, `RectTransform`
 - [ ] **Groups / Tags API** — control by key (`PauseAllByKey`, `StopByKey`)
 - [ ] **Between Debugger** — EditorWindow for inspecting active tweens, capacity, and GC allocations
 - [ ] **Sequence Awaiters** — async await support for sequences

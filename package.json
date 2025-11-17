@@ -1,7 +1,7 @@
 {
   "name": "com.spikethehedgehogdev.betweenredkit",
   "displayName": "Between RedKit",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "unity": "2021.3",
   "description": "Lightweight zero-GC tween processor for Unity. Async-ready, testable, and embedded-friendly alternative to DOTween. Part of the future RedKit framework.",
   "keywords": [
