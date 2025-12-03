@@ -52,7 +52,7 @@ and adheres to [Semantic Versioning](https://semver.org/).
 ### Notes
 - Partial progress on “Value Targets” roadmap milestone.
 
-## [0.11.0] – 2025-12-02
+## [0.11.0] – 2025-12-03
 ### Added
 - Full easing pack based on classical Penner functions:
   - Sine: `InSine`, `OutSine`, `InOutSine`
@@ -75,3 +75,13 @@ and adheres to [Semantic Versioning](https://semver.org/).
 
 ### Notes
 - This update **reorders enum values**, which may break serialized `EaseType` data if used in assets or configs.
+
+## [0.12.0] – 2025-12-03
+### Added
+- LocalMoveTo() transform extension method.
+- LocalRotateTo() transform extension method.
+- LocalPositionBetween and LocalRotationBetween tween targets.
+
+### Changed
+- Updated TransformExtensions structure to include local-space motion and rotation.
+- Minor internal cleanup and consistency pass in transform tween targets.

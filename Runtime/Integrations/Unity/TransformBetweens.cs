@@ -3,13 +3,11 @@ using UnityEngine;
 
 namespace BetweenRedKit.Integrations.Unity
 {
+    #region Base
+
     /// <summary>
     /// Base class for transform-based tween targets (<see cref="PositionBetween"/>, <see cref="RotationBetween"/>, <see cref="ScaleBetween"/>).
     /// </summary>
-    /// <remarks>
-    /// Implements the <see cref="IBetweenTarget"/> interface and provides common lifetime validation
-    /// and transform reference handling for zero-GC interpolation of <see cref="Transform"/> properties.
-    /// </remarks>
     public abstract class TransformBetweenBase : IBetweenTarget
     {
         /// <summary>
@@ -22,17 +20,19 @@ namespace BetweenRedKit.Integrations.Unity
         /// </summary>
         protected bool HasTransform => Tr != null;
 
-        /// <inheritdoc />
-        public bool IsAlive => Tr != null;
-
-        /// <inheritdoc />
-        public object Key => Tr;
-
         /// <summary>
         /// Initializes a new instance of the transform tween base.
         /// </summary>
         /// <param name="tr">The transform to animate.</param>
         protected TransformBetweenBase(Transform tr) => Tr = tr;
+
+        #region IBetweenTarget
+
+        /// <inheritdoc />
+        public bool IsAlive => Tr != null;
+
+        /// <inheritdoc />
+        public object Key => Tr;
 
         /// <inheritdoc />
         public abstract void CaptureStart();
@@ -42,14 +42,17 @@ namespace BetweenRedKit.Integrations.Unity
 
         /// <inheritdoc />
         public abstract void CompleteImmediately();
+        
+        #endregion
     }
+    
+    #endregion
+
+    #region Position
 
     /// <summary>
     /// Tween target that interpolates <see cref="Transform.position"/>.
     /// </summary>
-    /// <remarks>
-    /// Uses <see cref="Vector3.LerpUnclamped(Vector3, Vector3, float)"/> for zero-GC position interpolation.
-    /// </remarks>
     public sealed class PositionBetween : TransformBetweenBase
     {
         private Vector3 _start, _end;
@@ -61,6 +64,8 @@ namespace BetweenRedKit.Integrations.Unity
         /// <param name="end">The target world position.</param>
         public PositionBetween(Transform tr, Vector3 end) : base(tr) => _end = end;
 
+        #region TransformBetweenBase
+
         /// <inheritdoc />
         public override void CaptureStart() => _start = Tr.position;
 
@@ -69,14 +74,40 @@ namespace BetweenRedKit.Integrations.Unity
 
         /// <inheritdoc />
         public override void CompleteImmediately() => Tr.position = _end;
+        
+        #endregion
     }
+    
+    /// <summary>
+    /// Tween target that interpolates <see cref="Transform.localPosition"/>.
+    /// </summary>
+    public sealed class LocalPositionBetween : TransformBetweenBase
+    {
+        private Vector3 _start, _end;
 
+        public LocalPositionBetween(Transform tr, Vector3 end) : base(tr) => _end = end;
+
+        #region TransformBetweenBase
+
+        /// <inheritdoc />
+        public override void CaptureStart() => _start = Tr.localPosition;
+
+        /// <inheritdoc />
+        public override void Apply(float eased) => Tr.localPosition = Vector3.LerpUnclamped(_start, _end, eased);
+
+        /// <inheritdoc />
+        public override void CompleteImmediately() => Tr.localPosition = _end;
+
+        #endregion
+    }
+    
+    #endregion
+
+    #region Rotation
+    
     /// <summary>
     /// Tween target that interpolates <see cref="Transform.rotation"/>.
     /// </summary>
-    /// <remarks>
-    /// Uses <see cref="Quaternion.SlerpUnclamped(Quaternion, Quaternion, float)"/> for smooth rotational transitions.
-    /// </remarks>
     public sealed class RotationBetween : TransformBetweenBase
     {
         private Quaternion _start, _end;
@@ -88,6 +119,8 @@ namespace BetweenRedKit.Integrations.Unity
         /// <param name="end">The target rotation.</param>
         public RotationBetween(Transform tr, Quaternion end) : base(tr) => _end = end;
 
+        #region TransformBetweenBase
+
         /// <inheritdoc />
         public override void CaptureStart() => _start = Tr.rotation;
 
@@ -96,14 +129,40 @@ namespace BetweenRedKit.Integrations.Unity
 
         /// <inheritdoc />
         public override void CompleteImmediately() => Tr.rotation = _end;
+        
+        #endregion
     }
+
+    /// <summary>
+    /// Tween target that interpolates <see cref="Transform.localRotation"/>.
+    /// </summary>
+    public sealed class LocalRotationBetween : TransformBetweenBase
+    {
+        private Quaternion _start, _end;
+
+        public LocalRotationBetween(Transform tr, Quaternion end) : base(tr) => _end = end;
+
+        #region TransformBetweenBase
+        
+        /// <inheritdoc />
+        public override void CaptureStart() => _start = Tr.localRotation;
+
+        /// <inheritdoc />
+        public override void Apply(float eased) => Tr.localRotation = Quaternion.SlerpUnclamped(_start, _end, eased);
+
+        /// <inheritdoc />
+        public override void CompleteImmediately() => Tr.localRotation = _end;
+
+        #endregion
+    }
+
+    #endregion
+
+    #region Scale
 
     /// <summary>
     /// Tween target that interpolates <see cref="Transform.localScale"/>.
     /// </summary>
-    /// <remarks>
-    /// Uses <see cref="Vector3.LerpUnclamped(Vector3, Vector3, float)"/> for zero-GC local scale interpolation.
-    /// </remarks>
     public sealed class ScaleBetween : TransformBetweenBase
     {
         private Vector3 _start, _end;
@@ -115,6 +174,8 @@ namespace BetweenRedKit.Integrations.Unity
         /// <param name="end">The target local scale.</param>
         public ScaleBetween(Transform tr, Vector3 end) : base(tr) => _end = end;
 
+        #region TransformBetweenBase
+
         /// <inheritdoc />
         public override void CaptureStart() => _start = Tr.localScale;
 
@@ -123,5 +184,9 @@ namespace BetweenRedKit.Integrations.Unity
 
         /// <inheritdoc />
         public override void CompleteImmediately() => Tr.localScale = _end;
+        
+        #endregion
     }
+    
+    #endregion
 }
