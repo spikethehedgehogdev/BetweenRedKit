@@ -51,3 +51,27 @@ and adheres to [Semantic Versioning](https://semver.org/).
 
 ### Notes
 - Partial progress on “Value Targets” roadmap milestone.
+
+## [0.11.0] – 2025-12-02
+### Added
+- Full easing pack based on classical Penner functions:
+  - Sine: `InSine`, `OutSine`, `InOutSine`
+  - Quad: `InQuad`, `OutQuad`, `InOutQuad`
+  - Cubic: `InCubic`, `OutCubic`, `InOutCubic`
+  - Quart: `InQuart`, `OutQuart`, `InOutQuart`
+  - Quint: `InQuint`, `OutQuint`, `InOutQuint`
+  - Expo: `InExpo`, `OutExpo`, `InOutExpo`
+  - Circ: `InCirc`, `OutCirc`, `InOutCirc`
+  - Back: `InBack`, `OutBack`, `InOutBack`
+  - Elastic: `InElastic`, `OutElastic`, `InOutElastic`
+  - Bounce: `InBounce`, `OutBounce`, `InOutBounce`
+- Updated `EaseType` ordering to a fully structured, grouped format.
+- Rebuilt `DefaultEasingProvider` with the full built-in easing set.
+- Updated XML docs for all new easing types.
+
+### Changed
+- Replaced previous limited easing set with a complete and logically grouped one.
+- Updated README to reflect full easing support.
+
+### Notes
+- This update **reorders enum values**, which may break serialized `EaseType` data if used in assets or configs.

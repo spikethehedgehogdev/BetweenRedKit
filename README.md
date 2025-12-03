@@ -24,6 +24,7 @@ It’s not a replacement for DOTween — it’s a lightweight alternative for ca
 - **Graphics integration:** Built-in extensions for `ColorTo` and `FadeTo`.
 - **Lifecycle control:** `Dispose()`, `PauseAll()`, `Stop()`, `CullInvalidTargets()` for safe runtime cleanup.  
 - **Minimal runtime footprint:** ~15 KB of code, no editor dependencies, single external dependency — UniTask.
+- **Full easing pack:** all classical Penner functions (Sine, Quad, Cubic, Quart, Quint, Expo, Circ, Back, Elastic, Bounce).
 
 Supported Unity versions: **2021.3 LTS and newer**
 
